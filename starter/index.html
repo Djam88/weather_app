@@ -3,46 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Dashboard</title>
-    <!-- Add Bootstrap CSS -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
   </head>
   <body>
-    <!-- Add Bootstrap Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand mx-auto" href="#">Weather Dashboard</a>
-      </div>
+    <nav class="navbar navbar-dark bg-dark">
+      <span class="navbar-brand mb-0 h1 w-100 text-center"
+        >Weather Dashboard</span
+      >
     </nav>
-    <div class="container mt-3">
-      <div class="content">
-        <div class="current-weather">
-          <div class="search-container input-group mb-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-4 bg-light">
+          <p class="search-header my-1">Search for a city</p>
+          <div class="input-group mb-3">
             <input
-              type="text"
               id="city-input"
+              type="text"
               class="form-control"
               placeholder="Enter city name"
+              aria-label="Enter city name"
             />
             <div class="input-group-append">
-              <button id="search-button" class="btn btn-primary" type="button">
-                Search
+              <button class="btn btn-primary" type="button" id="search-button">
+                <i class="fas fa-search"></i>
               </button>
             </div>
           </div>
-          <h2 id="city-name"></h2>
-          <img id="current-pic" src="" alt="Weather Icon" class="img-fluid" />
-          <p id="temperature"></p>
-          <p id="humidity"></p>
-          <p id="wind-speed"></p>
-          <p id="UV-index"></p>
+          <button class="btn btn-primary mb-3" type="button" id="clear-history">
+            Clear history
+          </button>
+          <form id="history"></form>
         </div>
-        <div class="forecast-container">
-          <h2>5-Day Forecast</h2>
+        <div class="col-8">
+          <div class="row mr-0">
+            <div class="col-12 border border-dark m-3 rounded">
+              <div class="row">
+                <div class="col-12">
+                  <span id="city-name" class="city-name align-middle"></span>
+                  <img id="current-pic" src="placeholder" alt="" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p id="temperature"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p id="humidity"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p id="wind-speed"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 d-flex">
+                  <p id="UV-index"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h3>5-Day Forecast</h3>
+            </div>
+          </div>
           <div class="row">
             <div
               class="col forecast bg-primary text-white ml-3 mb-3 rounded"
@@ -63,10 +102,7 @@
         </div>
       </div>
     </div>
-    <!-- Add Bootstrap JavaScript and jQuery (required for Bootstrap) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
