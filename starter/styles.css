@@ -1,16 +1,49 @@
-.navbar-brand {
-  font-size: 36px;
+/* Add this CSS to your styles.css file or in a <style> tag in the HTML */
+
+/* Adjust the forecast card styles */
+.forecast-card {
+  background-color: #3d6c74; /* Background color (blue) */
+  width: 95px;
+  color: #fff; /* Text color (white) */
+  border-radius: 10px; /* Rounded corners */
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 10px; /* Add some spacing between the cards */
+  transition: transform 0.2s; /* Add a smooth transition for the zoom effect */
 }
 
-.search-header {
-  font-size: 24px;
+.forecast-card:hover {
+  transform: scale(1.1); /* Zoom in by 10% on hover */
+}
+
+.forecast-card img {
+  max-width: 50px; /* Adjust the max width of the weather icon */
+  height: auto;
+}
+
+/* Customize font styles for date, temp, and humidity */
+.forecast-card .date {
   font-weight: bold;
+  font-size: 18px; /* Adjust the font size */
 }
 
-.city-name {
-  font-size: 30px;
+.forecast-card .temp,
+.forecast-card .humidity {
+  font-size: 14px; /* Adjust the font size */
+  text-align: left;
 }
 
-.forecast-date {
-  font-size: 18px;
+/* Center the text vertically in the card */
+.forecast-card p {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Optional: Adjust the font size for the search header and history */
+.search-header,
+.history p {
+  font-size: 20px; /* Adjust the font size for these headings */
 }
