@@ -4,7 +4,7 @@
 
 Weather Dashboard is a simple web application that allows users to check the current weather and 5-day forecast for a city. It provides real-time weather information, including temperature, humidity, wind speed, and UV index. This project is built using HTML, CSS, Bootstrap, and JavaScript.
 
-![Weather Dashboard Screenshot](./assets/images/Screenshot%202023-09-25%20041749.png.png)
+![Weather Dashboard Screenshot](./assets/images/Screenshot%202023-09-25%20041749.png)
 
 ## Features
 
