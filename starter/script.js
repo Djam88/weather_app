@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Constants
-  const apiKey = "dac08af8ea689414f3702cb1ea5bf065"; // Replace with your OpenWeatherMap API key
+  const apiKey = "7f83aa2e08346202098dfd1ee67f065f"; // Replace with your OpenWeatherMap API key
   const historyForm = document.getElementById("history");
   const cityInput = document.getElementById("city-input");
   const searchButton = document.getElementById("search-button");
@@ -25,27 +25,27 @@ document.addEventListener("DOMContentLoaded", function () {
         return response.json();
       })
       .then((data) => {
-        // Update the display with weather data
-        cityName.textContent = data.name;
+        // Get the current date
+        const currentDate = new Date();
+
+        // Update the display with weather data and current date
+        cityName.textContent = `${data.name} - ${currentDate.toLocaleDateString(
+          "en-UK",
+          { year: "numeric", month: "numeric", day: "numeric" }
+        )}`;
         temperature.textContent = `Temperature: ${data.main.temp}°C`;
         humidity.textContent = `Humidity: ${data.main.humidity}%`;
         windSpeed.textContent = `Wind Speed: ${data.wind.speed} m/s`;
         // You'll need to fetch UV index from another API endpoint or calculate it separately
         uvIndex.textContent = "UV Index: N/A";
 
+        // Store search history
+        addToSearchHistory(city);
+
         // Fetch and display weather icon
         const iconCode = data.weather[0].icon;
         const iconURL = `https://openweathermap.org/img/w/${iconCode}.png`;
         currentPic.src = iconURL;
-
-        // Store search history
-        const historyItem = document.createElement("button");
-        historyItem.className = "btn btn-secondary";
-        historyItem.textContent = city;
-        historyItem.addEventListener("click", function () {
-          fetchWeatherData(city);
-        });
-        historyForm.prepend(historyItem);
 
         // Fetch 5-day forecast data
         fetchFiveDayForecast(city);
@@ -122,8 +122,45 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Call the function to fetch weather data with London as the default city
-  fetchWeatherData("London");
+  // Function to add a city to the search history
+  function addToSearchHistory(city) {
+    // Get existing search history from local storage
+    let searchHistory = localStorage.getItem("searchHistory");
+
+    // If there is no search history, initialize it as an empty array
+    if (!searchHistory) {
+      searchHistory = [];
+    } else {
+      // Parse the existing search history from JSON
+      searchHistory = JSON.parse(searchHistory);
+    }
+
+    // Add the new city to the search history
+    searchHistory.push(city);
+
+    // Store the updated search history back in local storage
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+
+    // Update the search history display
+    updateSearchHistoryDisplay(searchHistory);
+  }
+
+  // Function to update the search history display
+  function updateSearchHistoryDisplay(searchHistory) {
+    // Clear the existing search history display
+    historyForm.innerHTML = "";
+
+    // Loop through the search history and create buttons
+    searchHistory.forEach((city) => {
+      const historyItem = document.createElement("button");
+      historyItem.className = "btn btn-secondary history-item";
+      historyItem.textContent = city;
+      historyItem.addEventListener("click", function () {
+        fetchWeatherData(city);
+      });
+      historyForm.appendChild(historyItem);
+    });
+  }
 
   // Event handler for search button click
   searchButton.addEventListener("click", function () {
@@ -138,7 +175,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Event handler for clear history button click
   clearHistoryButton.addEventListener("click", function () {
+    // Clear search history from local storage
+    localStorage.removeItem("searchHistory");
+
+    // Clear the search history display
     historyForm.innerHTML = "";
-    localStorage.clear();
   });
+
+  // Load and display the initial search history from local storage
+  const initialSearchHistory = localStorage.getItem("searchHistory");
+  if (initialSearchHistory) {
+    updateSearchHistoryDisplay(JSON.parse(initialSearchHistory));
+  }
+
+  // Call the function to fetch weather data with London as the default city
+  fetchWeatherData("London");
 });

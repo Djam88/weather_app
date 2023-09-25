@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="styles.css" />
     <link
@@ -18,9 +18,9 @@
     <header class="bg-primary text-white text-center py-4">
       <h1>Weather Dashboard</h1>
     </header>
-    <main class="container">
+    <main class="container-fluid">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 order-md-1">
           <div class="bg-light p-4 mb-4">
             <h3 class="search-header my-1">Search for a City</h3>
             <div class="input-group mb-3">
@@ -51,7 +51,7 @@
             </button>
           </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 order-md-2">
           <div class="current-weather bg-light p-4 mb-3">
             <h2 class="mb-4"><span id="city-name"></span></h2>
             <img
@@ -117,7 +117,7 @@
       </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
