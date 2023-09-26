@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Constants
-  const apiKey = "7f83aa2e08346202098dfd1ee67f065f"; // Replace with your OpenWeatherMap API key
+  const apiKey = "7f83aa2e08346202098dfd1ee67f065f";
   const historyForm = document.getElementById("history");
   const cityInput = document.getElementById("city-input");
   const searchButton = document.getElementById("search-button");
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         temperature.textContent = `Temperature: ${data.main.temp}°C`;
         humidity.textContent = `Humidity: ${data.main.humidity}%`;
         windSpeed.textContent = `Wind Speed: ${data.wind.speed} m/s`;
-        // You'll need to fetch UV index from another API endpoint or calculate it separately
+        // UV index from another API endpoint
         uvIndex.textContent = "UV Index: N/A";
 
         // Store search history

@@ -19,7 +19,7 @@
 .forecast-card img {
   max-width: 50px; /* Adjust the max width of the weather icon */
   height: auto;
-}
+}l
 
 /* Customize font styles for date, temp, and humidity */
 .forecast-card .date {
